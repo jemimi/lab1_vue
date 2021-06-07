@@ -38,32 +38,41 @@
 	<body>
 	
 	<div id="app">
-        <div class="card">
-            <span class="main_image">
-                <img v-if="profile.image" :src="profile.image"  >
-                <img v-else="profile.default" :src="profile.default"  >
-            </span>
-            
+        
+        <span v-if="profile">
+            <div class="card">
+                <img v-if="profile.image":src="profile.image"  >
+                <img v-else="dProfile.image" :src="dProfile.image" > 
+                
+                
+                <span class="container">
+                    <span v-if="profile.fname && profile.lname">
+                        <h4>{{profile.fname}} {{profile.lname}} </h4>
+                    </span>
+                    <span v-else>
+                        {{dProfile.fname}} 
+                    </span>
+                    <span v-if="profile.desc">
+                        <h5>{{profile.desc}}</h5>
+                    </span>
+                    <span v-else>
+                        {{dProfile.desc}}
+                    </span>
+                    <span v-if="profile.bio">
+                        {{profile.bio}}
+                    </span>
+                    <span v-else>
+                        {{dProfile.bio}}
+                    </span>
+                </span>
+                
+                
 
-            <span class="container">
-              <span v-if="profile"><h4>{{profile.fname}} {{profile.lname}} </h4>
-            </span>
-            <span v-else>
-                Name
-            </span>
-            <span v-if="profile">
-                <h5>{{profile.desc}}</h5>
-            </span>
-            <span v-else>
-                Description.
-            </span>
-            <span v-if="profile">
-                {{profile.bio}}
-            </span>
-            <span v-else>
-                Bio.
-            </span>
-        </div>
+            </div>
+        </span>
+        <span v-else>
+           No Profile
+        </span>
 	</div>
 	
 	<script>
@@ -77,10 +86,16 @@
 				lname: "Choi",
                 desc: "CTO",
                 bio: "Jemi is CTO of BlahBlah Startup",
-                //image: "",
-                image: "./jemi3.png",	
-                default: "./img_avatar2.png"
-			}
+                image: "./jemi3.png"	
+                
+			},
+            dProfile:{
+                fname: "First Name",
+                //lname: "Last Name",
+                desc: "Description",
+                bio: "Bio",
+                image: "./img_avatar2.png"
+            }
 		
 		}
 		
